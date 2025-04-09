@@ -49,8 +49,11 @@ export default function CVPreview({ personalInfo, profile, education, workExperi
       {profile && (
         <div className="cv-section">
           <h2>Profile</h2>
+          <div className="targetTitle">
+            <h3>{profile.targetTitle}</h3>
+          </div>
           <div className="cv-content">
-            <p>{profile}</p>
+            <p>{profile.summary}</p>
           </div>
         </div>
       )}
