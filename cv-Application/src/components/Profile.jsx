@@ -1,12 +1,10 @@
 import "../styles/GeneralInfo.css";
 
-export default function Profile({ upprofile, onProfileChange }) {
-    console.log(`title: ${upprofile}`);
-    console.log(`title: ${upprofile.targetTitle}`);
+export default function Profile({ profile, onProfileChange }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         onProfileChange({
-          ...upprofile,
+          ...profile,
           [name]: value
         });
       };
@@ -21,12 +19,13 @@ export default function Profile({ upprofile, onProfileChange }) {
                 type="text"
                 id="target-title"
                 name="targetTitle"
-                value={upprofile?.targetTitle || ''} 
+                value={profile?.targetTitle || ''} 
                 onChange={handleChange}
                 />
             <label>Profile Summary</label>
             <textarea
-                value={upprofile?.summary || ''}
+                name="summary"
+                value={profile?.summary || ''}
                 onChange={handleChange}
                 placeholder="Write a brief professional summary"
                 rows={6}

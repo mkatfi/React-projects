@@ -5,7 +5,9 @@ import Education from './components/Education';
 import WorkExperience from './components/WorkExperience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Profile from './components/Profile';
 import CVPreview from './components/CVPreview';
+import Certifications from './components/Certifications';
 import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
@@ -28,10 +30,40 @@ function App() {
         university: 'Mohammed VI Polytechnic University',
         degree: 'Bachelor of Science',
         fieldOfStudy: 'Computer Science',
-        location: 'Ben Guerir, MAROCCO',
+        location: 'Ben Guerir',
         startYear: '2022',
         endYear: 'Present'
       }
+    ],
+    certifications: [
+      {
+        certificaName: 'Full Stack Web Development',
+        institution: 'Udemy',
+        fieldOfStudy: 'Web Development',
+        location: 'Online',
+        description: 'Completed a comprehensive course on full stack web development, covering front-end and back-end technologies.',
+        startYear: '2024',
+        endYear: '2025'
+      },
+      {
+        certificaName: 'Diplome Bureautique',
+        institution: 'Centre social à proximité',
+        fieldOfStudy: 'informatic Bureautique',
+        location: 'Ben Guerir',
+        description: 'Completed a comprehensive course on informatic technologies , word, excel, power point',
+        startYear: '2021',
+        endYear: '2022'
+      },
+      {
+        certificaName: 'Reporter d`images audiovisuel',
+        institution: 'OFPPT',
+        fieldOfStudy: 'Institut Spécialisé de Technologie Appliquée',
+        location: 'Ben Guerir',
+        description: 'Completed a hands-on training program focused on audiovisual production and media reporting. Gained practical skills in camera operation, video editing, lighting, and sound. Learned the fundamentals of visual storytelling, framing, and post-production using editing software. Developed projects that involved filming, editing, and producing short video segments for news or creative content.',
+        startYear: '2021',
+        endYear: '2022'
+        
+      },
     ],
     workExperience: [
       {
@@ -48,7 +80,7 @@ function App() {
         name: 'Project Management Tool',
         role: 'Lead Developer',
         company: 'Freelance',
-        period: '2022-01-01 to 2022-06-01'
+        period: '2022 - 2025'
       }
     ],
     skills: {
@@ -81,6 +113,18 @@ function App() {
       degree: '',
       fieldOfStudy: '',
       location: '',
+      description: '',
+      startYear: '',
+      endYear: ''
+    }
+  ]);
+  const [certifications, setcertifications] = useState([
+    { id: 1,
+      certificaName: '',
+      institution: '',
+      fieldOfStudy: '',
+      location: '',
+      description: '',
       startYear: '',
       endYear: ''
     }
@@ -122,6 +166,9 @@ function App() {
   const handleEducationChange = (updatedEducation) => {
     setEducation(updatedEducation);
   };
+  const handlecertificationsChange = (updatedcertifications) => {
+    setcertifications(updatedcertifications);
+  };
 
   const handleWorkExperienceChange = (updatedExperience) => {
     setWorkExperience(updatedExperience);
@@ -141,7 +188,70 @@ function App() {
     setWorkExperience(dataExpmle.workExperience);
     setProjects(dataExpmle.projects);
     setSkills(dataExpmle.skills);
+    setcertifications(dataExpmle.certifications);
   };
+  const handleDeletButtonClick = () =>{
+    setPersonalInfo({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      github: '',
+      linkedin: ''
+    });
+    
+    setProfile({
+      targetTitle: '',
+      summary: ''
+    });
+    
+    setEducation([
+      { id: 1, 
+        university: '',
+        degree: '',
+        fieldOfStudy: '',
+        location: '',
+        startYear: '',
+        endYear: ''
+      }
+    ]);
+
+    setcertifications([
+      { id: 1,
+        certificaName: '',
+        institution: '',
+        fieldOfStudy: '',
+        location: '',
+        description: '',
+        startYear: '',
+        endYear: ''
+      }
+    ]);
+    
+    setWorkExperience([
+      { 
+        id: 1, 
+        company: '', 
+        position: '', 
+        location: '',
+        startDate: '', 
+        endDate: '', 
+        responsibilities: ['']
+      }
+    ]);
+    
+    setProjects([
+      { id: 1,
+        name: '',
+        role: '', 
+        company: '',
+        period: '' 
+      }
+    ]);
+    setSkills({
+      programmingLanguages: ''
+    });
+  }
 
   return (
     <div className="app-container">
@@ -155,12 +265,16 @@ function App() {
               </svg>
               Download CV
             </button>
-            <button className='example-button'
-            onClick={handleExamploeButtonClick}
+            <button 
+              className='example-button'
+              onClick={handleExamploeButtonClick}
             >
             <FaFileAlt />
             Watch Example</button>
-            <button className='delete-button'>
+            <button 
+              className='delete-button'
+              onClick={handleDeletButtonClick}
+            >
               <RiDeleteBin6Line />
               Clean All</button>
         </div>
@@ -186,6 +300,12 @@ function App() {
             onClick={() => setActiveSection('work')}
           >
             Experience
+          </button>
+          <button
+            className={activeSection === 'certifications' ? 'active' : ''} 
+            onClick={() => setActiveSection('certifications')}
+          >
+            Certifications
           </button>
           <button 
             className={activeSection === 'education' ? 'active' : ''} 
@@ -217,27 +337,10 @@ function App() {
             )}
             
             {activeSection === 'profile' && (
-              <div className="profile">
-                <div className="section-content">
-                  <h2>Professional Profile</h2>
-                  <div className="form-group">
-                    <label>Target Title</label>
-                    <input type="text" 
-                      value={profile.targetTitle}
-                      onChange={handleProfileChange}
-                      placeholder="Write a brief professional summary"
-                      rows={6}
-                    />
-                    <label>Profile Summary</label>
-                    <textarea
-                      value={profile.summary}
-                      onChange={handleProfileChange}
-                      placeholder="Write a brief professional summary"
-                      rows={6}
-                    />
-                  </div>
-                </div>
-              </div>
+              <Profile 
+                  profile ={profile}
+                  onProfileChange={handleProfileChange}
+              />
             )}
             
             {activeSection === 'work' && (
@@ -246,7 +349,12 @@ function App() {
                 onWorkExperienceChange={handleWorkExperienceChange} 
               />
             )}
-            
+            {activeSection === 'certifications' && (
+              <Certifications 
+                certifications={certifications} 
+                onCertificationsChange={handlecertificationsChange} 
+              />
+            )}
             {activeSection === 'education' && (
               <Education 
                 education={education} 
@@ -276,6 +384,7 @@ function App() {
               personalInfo={personalInfo}
               profile={profile}
               education={education}
+              certifications={certifications}
               workExperience={workExperience}
               projects={projects}
               skills={skills}
