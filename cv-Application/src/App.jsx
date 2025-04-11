@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles/App.css';
 import PersonalInfo from './components/PersonalInfo';
 import Education from './components/Education';
@@ -10,8 +10,12 @@ import CVPreview from './components/CVPreview';
 import Certifications from './components/Certifications';
 import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import DownloadPDFButton from './components/Downloadpdf';
+
 
 function App() {
+
+  // Example data to populate the form
   const dataExpmle = {  
     personalInfo: {
       firstName: 'Marouane',
@@ -33,7 +37,23 @@ function App() {
         location: 'Ben Guerir',
         startYear: '2022',
         endYear: 'Present'
-      }
+      },
+      {
+        university: 'Universite des sciences juridiques economiques et sociales Cadi Ayyad',
+        degree: 'Bachelors in Arabic private law',
+        fieldOfStudy: 'Arabic private law',
+        location: 'Marrakech',
+        startYear: '2016',
+        endYear: '2019'
+      },
+      {
+        university: 'Essalam High School',
+        degree: 'Baccalaureate',
+        fieldOfStudy: 'Physical Sciences',
+        location: 'Ben Guerir',
+        startYear: '2015',
+        endYear: '2016'
+      },
     ],
     certifications: [
       {
@@ -77,10 +97,17 @@ function App() {
     ],
     projects: [
       {
-        name: 'Project Management Tool',
-        role: 'Lead Developer',
-        company: 'Freelance',
-        period: '2022 - 2025'
+        name: 'Inception',
+        dproject: 'Developed a system administration project using Docker to virtualize various images in a self-configured virtual machine.',
+      },
+      {
+        name: 'IRC Project',
+        dproject: 'Is a group project that makes us recreate an IRC server (from scratch, in C++) The server follows the RFC 2812 specification and can therefore be used with existing IRC clients',
+
+      },
+      {
+        name: 'Ft_Transcendance',
+        dproject: 'A dynamic web application for a ping-pong game using pure JavaScript The project features real-time game play and smooth animations',
       }
     ],
     skills: {
@@ -90,9 +117,10 @@ function App() {
 
 
  
-
+// The state to manage the active section
   const [activeSection, setActiveSection] = useState('personal');
 
+// The state to manage the form data
   const [personalInfo, setPersonalInfo] = useState({
     firstName: '',
     lastName: '',
@@ -145,15 +173,16 @@ function App() {
   const [projects, setProjects] = useState([
     { id: 1,
       name: '',
-      role: '', 
-      company: '',
-      period: '' 
+      dproject: ''
     }
   ]);
   
   const [skills, setSkills] = useState({
     programmingLanguages: ''
   });
+
+
+  // Function to handle changes in the info section
 
   const handlePersonalInfoChange = (updatedInfo) => {
     setPersonalInfo(updatedInfo);
@@ -181,6 +210,8 @@ function App() {
   const handleSkillsChange = (updatedSkills) => {
     setSkills(updatedSkills);
   };
+
+// Function to handle the example button click
   const handleExamploeButtonClick = () => {
     setPersonalInfo(dataExpmle.personalInfo);
     setProfile(dataExpmle.profile);
@@ -190,6 +221,12 @@ function App() {
     setSkills(dataExpmle.skills);
     setcertifications(dataExpmle.certifications);
   };
+
+
+
+// Function to handle the delete button click
+// This function resets all the form fields to their initial state
+// and clears the preview section.
   const handleDeletButtonClick = () =>{
     setPersonalInfo({
       firstName: '',
@@ -243,40 +280,38 @@ function App() {
     setProjects([
       { id: 1,
         name: '',
-        role: '', 
-        company: '',
-        period: '' 
+        dproject: '', 
       }
     ]);
     setSkills({
       programmingLanguages: ''
     });
   }
+// useEffect to set the initial state of the form fields
+  useEffect (() => {
+    handleExamploeButtonClick();
+  }, []);
+
+
 
   return (
     <div className="app-container">
       <div className="header">
         <img src="src/image/logo.png" alt="" />
         <div className="download-section">
-            <button className="download-button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-              </svg>
-              Download CV
-            </button>
+            <DownloadPDFButton />
             <button 
               className='example-button'
               onClick={handleExamploeButtonClick}
             >
             <FaFileAlt />
-            Watch Example</button>
+            Example</button>
             <button 
               className='delete-button'
               onClick={handleDeletButtonClick}
             >
               <RiDeleteBin6Line />
-              Clean All</button>
+              Clean </button>
         </div>
       </div>
       <div className="sidebar">
@@ -379,7 +414,7 @@ function App() {
       </div>
 
       <div className="preview-container">
-        <div className="paper">
+        <div  id="page" className="paper">
             <CVPreview
               personalInfo={personalInfo}
               profile={profile}

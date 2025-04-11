@@ -11,18 +11,6 @@
   padding: 0;
 }
 
-/* body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5;
-  color: #333;
-  background-color: #f5f5f5;
-} */
-
-/* .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-} */
 
 /* CV Preview Styles */
 .cv-preview {
@@ -42,7 +30,7 @@
 }
 
 .cv-header h1 {
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 15px;
   font-weight: bold;
   text-transform: uppercase;
@@ -82,7 +70,7 @@
 
 .cv-header h1 {
   font-size: 30px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #2c3e50;
 }
 
@@ -110,25 +98,27 @@
 }
 
 .cv-section h2 {
-  font-size: 18px;
   text-transform: uppercase;
-  /* border-bottom: 1px solid #333; */
-  padding-bottom: 6px;
-  margin-bottom: 11px;
-  font-weight: bold;
-  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
   color: #3498db;
+  padding-bottom: 2px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'roboto', serif;
+  white-space: nowrap;
 }
 .cv-section h2::after {
-  content: '';
-  position: relative;
-  width: 100%;
+  content: "";
+  margin-top: 2px;
+  display: inline-block;
+  flex-grow: 1;
   height: 1px;
-  display: block;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  background-color: #7f7e7e;
+  background-color: #000;
+  margin-left: 8px;
 }
 .targetTitle h3 {
   font-size: 17px;
@@ -146,17 +136,18 @@
 .header-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .title-company h3 {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 2px;
   color: #333;
 }
 
 .title-company p {
-  margin-left: 14px;
+  margin-left: 12px;
+  font-size: 14px;
 }
 
 .position {
@@ -174,11 +165,6 @@
   margin-bottom: 2px;
 }
 
-.experience-item,
-.education-item,
-.project-item {
-  margin-bottom: 20px;
-}
 
 .responsibilities-list {
   margin-left: 20px;
@@ -206,63 +192,7 @@
   padding: 0;
   margin: 0;
 }
-/* .skills-list li {
-  background-color: #3498db;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-} */
 
-/* .skills-list li:hover {
-  background-color: #2980b9;
-} */
-/* .skills-list li:active {
-  background-color: #1f618d;
-} */
-
-
-
-
-/* Items Layout */
-/* .experience-item,
-.education-item,
-.project-item,
-.certification-item {
-  margin-bottom: 20px;
-}
-
-.header-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-
-.title-company h3 {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.title-company p {
-  font-size: 15px;
-  margin-bottom: 2px;
-}
-
-.position {
-  font-style: italic;
-}
-
-.location-date {
-  text-align: right;
-  font-size: 14px;
-}
-
-.location-date p {
-  margin-bottom: 2px;
-} */
 
 /* Responsibilities List */
 .responsibilities-list {
@@ -276,21 +206,6 @@
   position: relative;
 }
 
-/* Form Styles */
-/* .section-content {
-  background-color: white;
-  border-radius: 4px;
-  padding: 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-.section-content h2 {
-  margin-bottom: 20px;
-  font-size: 20px;
-  color: #333;
-}
-*/
 .form-group {
   margin-bottom: 15px;
 }
@@ -324,18 +239,16 @@
 
 .form-group.half {
   flex: 1;
-} */
+} 
 
 /* Certifications */
 .certifica-entry,
 .education-entry,
 .experience-entry,
 .project-entry {
-  background-color: #f9f9f9;
   border-radius: 4px;
   padding: 20px;
   margin-bottom: 15px;
-  border: 1px solid #eee;
 }
 
 .certifica-entry h3,
@@ -365,10 +278,14 @@ button {
 .add-button {
   background-color: #007bff;
   color: white;
+  transition: all 0.3s;
 }
 
 .add-button:hover {
   background-color: #0069d9;
+  color: black;
+  font-size: large;
+  font-weight: bold;
 }
 
 .remove-button {
@@ -379,6 +296,9 @@ button {
 
 .remove-button:hover {
   background-color: #c82333;
+  color: yellow;
+  font-weight: bold;
+  box-shadow: 0 0 5px #dc3545;
 }
 
 .add-small-button,
@@ -397,6 +317,8 @@ button {
 
 .add-small-button:hover {
   background-color: #218838;
+  font-weight: bold;
+  box-shadow: 0 0 5px #28a745;
 }
 
 .remove-small-button {
@@ -463,68 +385,7 @@ button {
     color: black;
   }
 }
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
 
-  /* body {
-    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
-  } */
-  
-  /* .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  } */
-  
-  /* h1, h2, h3, h4 {
-    margin-bottom: 10px;
-    color: #ccc;
-  }
-  
-  /* Form Styles 
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #3498db;
-    outline: none;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .form-group.half {
-    flex: 1;
-  }*/
-  
   /* Section Styles */
   .section-content {
     border-radius: 8px;
@@ -617,273 +478,4 @@ button {
   .remove-small-button:hover {
     background-color: #c0392b;
   }
-  /* Responsibilities Section
-  .responsibilities-section {
-    margin-top: 15px;
-  }
-  
-  .responsibility-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .responsibility-item input {
-    flex: 1;
-  }*/
-  
-  /* CV Preview Styles *//*
-  .cv-preview {
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: 'Georgia', 'Times New Roman', serif;
-  }
-  
-  .cv-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .cv-header h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-  }
-  
-  .contact-info {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .contact-info span {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .contact-info svg {
-    margin-right: 5px;
-    fill: #3498db;
-  }
-  
-  .cv-section {
-    margin-bottom: 25px;
-  }
-  
-  .cv-section h2 {
-    font-size: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-  }
-  
-  .cv-content {
-    padding: 0 10px;
-  }
-  
-  .header-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .title-company h3 {
-    font-size: 16px;
-    margin-bottom: 2px;
-    color: #333;
-  }
-  
-  .position {
-    font-style: italic;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .location-date {
-    text-align: right;
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .experience-item,
-  .education-item,
-  .project-item {
-    margin-bottom: 20px;
-  }
-  
-  .responsibilities-list {
-    margin-left: 20px;
-    margin-top: 10px;
-  }
-  
-  .responsibilities-list li {
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  */
-  /* Responsive Design 
-  @media (max-width: 768px) {
-    .form-row {
-      flex-direction: column;
-      gap: 0;
-    }
-    
-    .header-row {
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .location-date {
-      text-align: left;
-    }
-    
-    .cv-preview {
-      padding: 20px;
-    }
-    
-    .contact-info {
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-  }
-   */
-  /* Print Styles 
-  @media print {
-    body {
-      background-color: white;
-    }
-    
-    .cv-preview {
-      box-shadow: none;
-      padding: 0;
-    }
-    
-    .cv-section h2 {
-      color: black;
-    }
-  } */
-/* .personal{
-    .section-content{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%;
-        height: 100%;
-        padding: 1.5rem;
-        >h2{
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        } 
-        .form-group{
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            width: 100%;
-            justify-content: center;
-            align-self: center;
-            flex-direction: column;
-            >label{
-            font-size: 1.5rem;
-            color: #eee;
-            margin-bottom: 0.5rem;
-            }
-            >input{
-                padding: 0.5rem;
-                font-size: 1.2rem;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                margin-bottom: 1rem;
-            }
-            >textarea{
-            width: 100%;
-            height: 150px;
-            padding: 0.5rem;
-            font-size: 1.2rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            resize: none;
-            background-color: #fff;
-            color: #000;
-                &:focus{
-                    outline: 4px auto -webkit-focus-ring-color;
-                    background-color: #fff;
-                    color: #000;
-                }
-                &:focus-visible{
-                    outline: 4px auto -webkit-focus-ring-color;
-                    background-color: #fff;
-                    color: #000;
-                }
-        
-            }
-        }
-    }
-}
-.profile{
-    .section-content{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        width: 100%;
-        height: 100%;
-        padding: 1.5rem;
-        >h2{
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        } 
-        .form-group{
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            width: 100%;
-            justify-content: center;
-            align-self: center;
-            flex-direction: column;
-            >label{
-            font-size: 1.5rem;
-            color: #eee;
-            margin-bottom: 0.5rem;
-            }
-            >textarea{
-            width: 100%;
-            height: 150px;
-            padding: 0.5rem;
-            font-size: 1.2rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            resize: none;
-            background-color: #fff;
-            color: #000;
-                &:focus{
-                    outline: 4px auto -webkit-focus-ring-color;
-                    background-color: #fff;
-                    color: #000;
-                }
-                &:focus-visible{
-                    outline: 4px auto -webkit-focus-ring-color;
-                    background-color: #fff;
-                    color: #000;
-                }
-        
-            }
-        }
-    }
-} */
-/* .work-experience{} */
-/* .education{} */
-/* .projects{} */
-/* .skills{} */
+ 

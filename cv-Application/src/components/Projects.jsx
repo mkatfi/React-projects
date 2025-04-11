@@ -1,15 +1,23 @@
 export default function Projects({ projects, onProjectsChange }) {
+
+  console.log('Projects:', projects.dproject);
+
     const handleChange = (index, e) => {
       const { name, value } = e.target;
       const updatedProjects = [...projects];
       updatedProjects[index] = { ...updatedProjects[index], [name]: value };
       onProjectsChange(updatedProjects);
+      console.log('Updated Projects:', updatedProjects);
+    console.log('Projects decriptionproject:', updatedProjects.dproject);
+    console.log('Project in dec:', projects[index].dproject);
+    console.log('Project name:', e.target.name );
+    console.log('Projectvalue:', e.target.value );
     };
-  
+
     const addProject = () => {
       onProjectsChange([
         ...projects,
-        { id: Date.now(), name: '', role: '', company: '', period: '' }
+        { id: Date.now(), name: '', dproject: '' }
       ]);
     };
   
@@ -36,41 +44,22 @@ export default function Projects({ projects, onProjectsChange }) {
                   name="name"
                   value={project.name}
                   onChange={(e) => handleChange(index, e)}
+                  placeholder="Enter the project name"
                 />
               </div>
-              
+
               <div className="form-group">
-                <label>Your Role</label>
-                <input
-                  type="text"
-                  name="role"
-                  value={project.role}
+                <label>Description Of Your Role In The Project</label>
+                <textarea
+                 name="dproject" // Fixed typo here
+                 value={project.dproject} 
                   onChange={(e) => handleChange(index, e)}
+                  placeholder="Write a description of your role in the project"
+                  rows={6}
                 />
               </div>
               
-              <div className="form-group">
-                <label>Company/Organization</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={project.company}
-                  onChange={(e) => handleChange(index, e)}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label>Time Period</label>
-                <input
-                  type="text"
-                  name="period"
-                  value={project.period}
-                  onChange={(e) => handleChange(index, e)}
-                  placeholder="Year - Year"
-                />
-              </div>
-              
-              {projects.length > 1 && (
+              {projects.length > 1  && (
                 <button 
                   type="button" 
                   className="remove-button"
