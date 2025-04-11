@@ -297,7 +297,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="header">
-        <img src="./src/image/logo.png" alt="" />
+      <img src="/logo.png" alt="Logo" />
         <div className="download-section">
             <DownloadPDFButton />
             <button 
