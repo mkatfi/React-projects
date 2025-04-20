@@ -1,7 +1,6 @@
 
 const Rules = () => {
 
-
   return (
     <>
         <div className="rules-container">
