@@ -2,9 +2,6 @@
 # 🧠 Memory Card Game
 
 **Project from React Course**
-![Game Preview](./src/image/rules.png)  
-![Game Preview](./src/image/page.png)  
-
 
 ## 🎯 Introduction
 
@@ -121,7 +118,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## 📸 Screenshots
 
-_Add screenshots here if you like!_
+![Game Preview](./src/image/rules.png)  
+![Game Preview](./src/image/page.png)  
 
 ---
 
