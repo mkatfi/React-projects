@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const GetImage = ({ score, bestScore, incrementScore, resetScore, cardNumber }) => {
-  const [characters, setCharacters] = useState([]);
+  // const [characters, setCharacters] = useState([]);
   const [cards, setCards] = useState([]);
+  const [clickedCards, setClickedCards] = useState([]);
+
+
+  function handleLoseGame() {
+    Swal.fire({
+      icon: 'error',
+      title: '💀 Game Over!',
+      text: 'You clicked the same card. Try again!',
+      confirmButtonText: 'Play Again',
+      confirmButtonColor: 'mediumspringgreen'
+    });
+  
+    resetScore();
+    setClickedCards([]);
+  }
+  
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,12 +31,13 @@ const GetImage = ({ score, bestScore, incrementScore, resetScore, cardNumber }) 
         // Take only the needed number of cards
         const selected = data.slice(0, cardNumber);
 
-        const allImages = selected.map(e => ({
+        const allImages = selected.map((e, index) => ({
           image: e?.images[0] || "placeholder.jpg",
           username: e?.name || "Unknown Character",
+          id : index,
         }));
 
-        setCharacters(data);
+        // setCharacters(data);
         setCards(allImages);
 
       } catch (error) {
@@ -28,21 +47,52 @@ const GetImage = ({ score, bestScore, incrementScore, resetScore, cardNumber }) 
 
     fetchData();
   }, [cardNumber]);
+  
+  function RandemCard() {
+    const RandemC = [...cards]; // Clone the original array
+
+    for (let i = RandemC.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [RandemC[i], RandemC[j]] = [RandemC[j], RandemC[i]];
+      // console.log(RandemC[i]);
+    }
+    console.log("Shuffled cards:", RandemC);
+    // setRandCard(RandemC);
+    return RandemC;
+
+  }
+  function handleCliked(id){
+    if (clickedCards.includes(id)) {
+      handleLoseGame();
+    } else {
+      incrementScore();
+      setClickedCards([...clickedCards, id]);
+    }
+    const shuffled = RandemCard();
+    setCards(shuffled);
+  }
+
 
   return (
     <>
-        <div className='score'>
-            <p>best score is :{bestScore}</p>
-            <p>count to try correct :{score}</p>
-        </div>
-    <div className="card-grid">
-      {cards.map((card, index) => (
-        <div key={index} className="card">
-          <img src={card.image} alt={card.username} />
-          <p>{card.username}</p>
-        </div>
-      ))}
-    </div>
+      <div className='score'>
+        <p>Best Score: {bestScore}</p>
+        <p>Current Score: {score}</p>
+      </div>
+
+      <div className="card-grid">
+        {cards.map((card, index) => (
+          
+          <div
+            key={index}
+            className="card"
+            onClick={() => handleCliked(card.id)}
+          >
+            <img src={card.image} alt={card.username} />
+          </div>
+        ))}
+      </div>
+    
     </>
   );
 };
