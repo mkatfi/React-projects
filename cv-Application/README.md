@@ -8,6 +8,8 @@ Absolutely! Here's a polished `README.md` based on the assignment description yo
 
 Welcome to your very first React project! This application allows users to input their personal, educational, and practical experience to generate a professional-looking CV.
 
+## 📸 Screenshots
+
 ![App Screenshot](./src/image/screenshot.png)
 
 ---
